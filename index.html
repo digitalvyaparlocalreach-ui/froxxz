@@ -119,14 +119,12 @@ nav{background:var(--nav-bg);box-shadow:var(--nav-shadow);transition:background 
 .faq-icon{transition:transform .3s}
 .faq-item.active .faq-icon{transform:rotate(45deg)}
 
-/* ── THEME TOGGLE with SVG icons ── */
 .theme-toggle{display:inline-flex;align-items:center;background:var(--surface2);border:1.5px solid var(--border);border-radius:999px;padding:4px 5px;cursor:pointer;gap:2px;transition:background .25s,border-color .25s}
 .theme-btn{width:30px;height:26px;border-radius:999px;font-size:13px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;cursor:pointer;transition:all .2s;color:var(--text2)}
 .theme-btn.active{background:#4f46e5;color:#fff;box-shadow:0 2px 8px rgba(79,70,229,.35)}
 .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .theme-btn.active svg{stroke:#fff}
 
-/* ── LANGUAGE SELECT ── */
 .lang-select-wrap{position:relative;display:inline-flex;align-items:center}
 .lang-select{appearance:none;-webkit-appearance:none;background:var(--surface2);border:1.5px solid var(--border);border-radius:999px;color:var(--text2);font-size:11px;font-weight:700;font-family:'DM Sans',sans-serif;padding:5px 26px 5px 11px;cursor:pointer;transition:all .2s;outline:none}
 .lang-select:hover,.lang-select:focus{border-color:#4f46e5;color:#4f46e5}
@@ -135,7 +133,6 @@ nav{background:var(--nav-bg);box-shadow:var(--nav-shadow);transition:background 
 input,textarea,select{background:var(--input-bg)!important;border-color:var(--border)!important;color:var(--text)!important}
 input::placeholder,textarea::placeholder{color:var(--text3)!important}
 
-/* ── BLOG MODAL ── */
 .blog-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0);pointer-events:none;transition:background .3s;display:flex;align-items:flex-end;justify-content:center}
 .blog-modal-overlay.open{background:rgba(0,0,0,0.55);pointer-events:all}
 .blog-modal-sheet{background:var(--surface);width:100%;max-width:780px;max-height:88vh;border-radius:24px 24px 0 0;overflow:hidden;transform:translateY(100%);transition:transform .4s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;box-shadow:0 -8px 48px rgba(0,0,0,0.25)}
@@ -259,8 +256,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
         <a href="#pricing"   onclick="showPage('pricing',event)"   class="nav-link text-sm font-medium" data-i="nav_pricing">Pricing</a>
         <a href="#faq"       onclick="showPage('faq',event)"       class="nav-link text-sm font-medium" data-i="nav_faq">FAQ</a>
         <a href="#contact"   onclick="showPage('contact',event)"   class="nav-link text-sm font-medium" data-i="nav_contact">Contact</a>
-
-        <!-- Theme Toggle — SVG icons -->
         <div class="theme-toggle" id="theme-toggle-wrap">
           <button class="theme-btn active" id="btn-light" onclick="setTheme('light',true)" title="Light mode">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -269,8 +264,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
             <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </button>
         </div>
-
-        <!-- Language Select with flags -->
         <div class="lang-select-wrap">
           <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
             <option value="en">🇺🇸 English</option>
@@ -279,11 +272,8 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
           </select>
           <svg class="lang-select-icon w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
         </div>
-
         <a href="#contact" onclick="showPage('contact',event)" class="bg-indigo-600 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-all shadow-md hover:-translate-y-0.5 transform" data-i="nav_cta">Get Started</a>
       </div>
-
-      <!-- Mobile controls -->
       <div class="md:hidden flex items-center gap-2">
         <div class="theme-toggle">
           <button class="theme-btn active" id="btn-light-m" onclick="setTheme('light',true)">
@@ -508,182 +498,139 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
       <p class="text-lg" style="color:var(--text2)" data-i="portfolio_p">Real websites built for real businesses. Click on any card to preview the website live.</p>
     </div>
 
+    <!-- Legend -->
+    <div class="flex justify-center gap-4 mb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold" style="background:rgba(16,185,129,0.12);color:#059669;border:1px solid rgba(16,185,129,0.3)">✅ Real Project — Live client website</div>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold" style="background:rgba(100,116,139,0.1);color:#64748b;border:1px solid rgba(100,116,139,0.2)">🎭 Demo — Sample/practice website</div>
+    </div>
+
     <!-- Category Filter -->
     <div class="flex flex-wrap justify-center gap-3 mb-12">
-      <button class="portfolio-cat-btn active" onclick="filterPortfolio('all', this)" data-i="pcat_all">All</button>
-      <button class="portfolio-cat-btn" onclick="filterPortfolio('restaurant', this)" data-i="pcat_restaurant">🍽️ Restaurant</button>
-      <button class="portfolio-cat-btn" onclick="filterPortfolio('gym', this)" data-i="pcat_gym">💪 Gym</button>
-      <button class="portfolio-cat-btn" onclick="filterPortfolio('salon', this)" data-i="pcat_salon">💇 Spa &amp; Salon</button>
-      <button class="portfolio-cat-btn" onclick="filterPortfolio('furniture', this)" data-i="pcat_furniture">🛋️ Furniture &amp; Interior</button>
+      <button class="portfolio-cat-btn active" onclick="filterPortfolio('all', this)">All</button>
+      <button class="portfolio-cat-btn" onclick="filterPortfolio('restaurant', this)">🏨 Hotel &amp; Restaurant</button>
+      <button class="portfolio-cat-btn" onclick="filterPortfolio('furniture', this)">🛋️ Furniture &amp; Interior</button>
+      <button class="portfolio-cat-btn" onclick="filterPortfolio('business', this)">🏢 Business</button>
     </div>
 
     <!-- Portfolio Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
 
-      <!-- Restaurant 1 -->
+      <!-- Malabar Hotel — DEMO -->
       <div class="portfolio-card visible" data-cat="restaurant">
-        <div class="site-preview-wrap" onclick="openPortfolioModal('https://www.theleela.com/', 'The Leela Palace — Restaurant', 'restaurant')">
-          <iframe src="https://www.theleela.com/" loading="lazy" title="Restaurant Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-          <div class="preview-overlay">
-            <span class="preview-visit-btn">👁 Preview Site</span>
-          </div>
+        <div class="site-preview-wrap" onclick="openPortfolioModal('https://malabarhotel.netlify.app/', 'Malabar Hotel', 'restaurant')">
+          <iframe src="https://malabarhotel.netlify.app/" loading="lazy" title="Malabar Hotel Preview" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay"><span class="preview-visit-btn">👁 Preview Site</span></div>
         </div>
         <div class="p-5">
           <div class="flex items-center gap-2 mb-2">
-            <span class="category-badge" style="background:rgba(239,68,68,0.12);color:#dc2626">🍽️ Restaurant</span>
+            <span class="category-badge" style="background:rgba(239,68,68,0.12);color:#dc2626">🏨 Hotel</span>
+            <span class="category-badge" style="background:rgba(100,116,139,0.1);color:#64748b">🎭 Demo</span>
           </div>
-          <h3 class="font-bold text-base mb-1" style="color:var(--text)">The Leela Palace</h3>
-          <p class="text-sm mb-3" style="color:var(--text2)">Luxury dining & hospitality — elegant multi-page website with reservation flow.</p>
+          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Malabar Hotel</h3>
+          <p class="text-sm mb-3" style="color:var(--text2)">Elegant hotel website with room showcasing, amenities section, and booking flow.</p>
           <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">8-Page Pro</span>
-            <button onclick="openPortfolioModal('https://www.theleela.com/', 'The Leela Palace', 'restaurant')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
+            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">Demo Project</span>
+            <button onclick="openPortfolioModal('https://malabarhotel.netlify.app/', 'Malabar Hotel', 'restaurant')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
           </div>
         </div>
       </div>
 
-      <!-- Restaurant 2 -->
-      <div class="portfolio-card visible" data-cat="restaurant">
-        <div class="site-preview-wrap" onclick="openPortfolioModal('https://www.barbequenationnation.com/', 'Barbeque Nation', 'restaurant')">
-          <iframe src="https://www.barbequenationnation.com/" loading="lazy" title="Restaurant Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-          <div class="preview-overlay">
-            <span class="preview-visit-btn">👁 Preview Site</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="category-badge" style="background:rgba(239,68,68,0.12);color:#dc2626">🍽️ Restaurant</span>
-          </div>
-          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Barbeque Nation Style</h3>
-          <p class="text-sm mb-3" style="color:var(--text2)">Restaurant chain with online booking, menu showcase, and location finder.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">Full Pack</span>
-            <button onclick="openPortfolioModal('https://www.barbequenationnation.com/', 'Barbeque Nation', 'restaurant')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Gym 1 -->
-      <div class="portfolio-card visible" data-cat="gym">
-        <div class="site-preview-wrap" onclick="openPortfolioModal('https://www.cultfit.com/', 'Cult.fit Gym', 'gym')">
-          <iframe src="https://www.cultfit.com/" loading="lazy" title="Gym Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-          <div class="preview-overlay">
-            <span class="preview-visit-btn">👁 Preview Site</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="category-badge" style="background:rgba(245,158,11,0.12);color:#d97706">💪 Gym</span>
-          </div>
-          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Cult.fit Style Gym</h3>
-          <p class="text-sm mb-3" style="color:var(--text2)">Modern fitness center with class schedules, memberships, and trainer profiles.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">8-Page Pro</span>
-            <button onclick="openPortfolioModal('https://www.cultfit.com/', 'Cult.fit Gym', 'gym')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Gym 2 -->
-      <div class="portfolio-card visible" data-cat="gym">
-        <div class="site-preview-wrap" onclick="openPortfolioModal('https://www.goldsgym.com/', 'Gold\'s Gym Style', 'gym')">
-          <iframe src="https://www.goldsgym.com/" loading="lazy" title="Gym Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-          <div class="preview-overlay">
-            <span class="preview-visit-btn">👁 Preview Site</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="category-badge" style="background:rgba(245,158,11,0.12);color:#d97706">💪 Gym</span>
-          </div>
-          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Gold's Gym Style</h3>
-          <p class="text-sm mb-3" style="color:var(--text2)">Bold, high-energy fitness brand with membership tiers and location pages.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:rgba(124,58,237,0.1);color:#7c3aed">Web+GMB</span>
-            <button onclick="openPortfolioModal('https://www.goldsgym.com/', 'Gold\'s Gym Style', 'gym')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Salon 1 -->
-      <div class="portfolio-card visible" data-cat="salon">
-        <div class="site-preview-wrap" onclick="openPortfolioModal('https://www.lakme-academy.com/', 'Lakme Salon Style', 'salon')">
-          <iframe src="https://www.lakme-academy.com/" loading="lazy" title="Salon Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-          <div class="preview-overlay">
-            <span class="preview-visit-btn">👁 Preview Site</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="category-badge" style="background:rgba(236,72,153,0.12);color:#db2777">💇 Spa &amp; Salon</span>
-          </div>
-          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Lakme Style Salon</h3>
-          <p class="text-sm mb-3" style="color:var(--text2)">Premium beauty salon with service menu, online booking, and gallery.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">4-Page Starter</span>
-            <button onclick="openPortfolioModal('https://www.lakme-academy.com/', 'Lakme Salon Style', 'salon')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Salon 2 -->
-      <div class="portfolio-card visible" data-cat="salon">
-        <div class="site-preview-wrap" onclick="openPortfolioModal('https://www.tresemme.com/in/', 'Spa & Wellness', 'salon')">
-          <iframe src="https://www.tresemme.com/in/" loading="lazy" title="Spa Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-          <div class="preview-overlay">
-            <span class="preview-visit-btn">👁 Preview Site</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="category-badge" style="background:rgba(236,72,153,0.12);color:#db2777">💇 Spa &amp; Salon</span>
-          </div>
-          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Spa &amp; Wellness Center</h3>
-          <p class="text-sm mb-3" style="color:var(--text2)">Luxurious spa experience with service packages and appointment booking.</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:rgba(124,58,237,0.1);color:#7c3aed">Web+GMB</span>
-            <button onclick="openPortfolioModal('https://www.tresemme.com/in/', 'Spa & Wellness', 'salon')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Furniture 1 -->
+      <!-- Furniture Making & Repairing — REAL -->
       <div class="portfolio-card visible" data-cat="furniture">
-        <div class="site-preview-wrap" onclick="openPortfolioModal('https://www.urbanladder.com/', 'Urban Ladder Style', 'furniture')">
-          <iframe src="https://www.urbanladder.com/" loading="lazy" title="Furniture Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-          <div class="preview-overlay">
-            <span class="preview-visit-btn">👁 Preview Site</span>
-          </div>
+        <div class="site-preview-wrap" onclick="openPortfolioModal('https://furnituremakingandrepairing.com/', 'Furniture Making & Repairing', 'furniture')">
+          <iframe src="https://furnituremakingandrepairing.com/" loading="lazy" title="Furniture Making & Repairing" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay"><span class="preview-visit-btn">👁 Preview Site</span></div>
         </div>
         <div class="p-5">
           <div class="flex items-center gap-2 mb-2">
-            <span class="category-badge" style="background:rgba(16,185,129,0.12);color:#059669">🛋️ Furniture &amp; Interior</span>
+            <span class="category-badge" style="background:rgba(16,185,129,0.12);color:#059669">🛋️ Furniture</span>
+            <span class="category-badge" style="background:rgba(16,185,129,0.15);color:#059669;border:1px solid rgba(16,185,129,0.3)">✅ Real Project</span>
           </div>
-          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Urban Ladder Style</h3>
-          <p class="text-sm mb-3" style="color:var(--text2)">Modern furniture showroom with product catalog, room inspiration, and EMI options.</p>
+          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Furniture Making &amp; Repairing</h3>
+          <p class="text-sm mb-3" style="color:var(--text2)">Professional furniture service site with catalog, services & WhatsApp lead generation.</p>
           <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">Full Pack</span>
-            <button onclick="openPortfolioModal('https://www.urbanladder.com/', 'Urban Ladder Style', 'furniture')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
+            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:rgba(16,185,129,0.12);color:#059669">✅ Live Project</span>
+            <button onclick="openPortfolioModal('https://furnituremakingandrepairing.com/', 'Furniture Making & Repairing', 'furniture')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
           </div>
         </div>
       </div>
 
-      <!-- Furniture 2 -->
+      <!-- Sanjary Home Decor — DEMO -->
       <div class="portfolio-card visible" data-cat="furniture">
-        <div class="site-preview-wrap" onclick="openPortfolioModal('https://www.pepperfry.com/', 'Pepperfry Style', 'furniture')">
-          <iframe src="https://www.pepperfry.com/" loading="lazy" title="Furniture Preview" sandbox="allow-scripts allow-same-origin"></iframe>
-          <div class="preview-overlay">
-            <span class="preview-visit-btn">👁 Preview Site</span>
-          </div>
+        <div class="site-preview-wrap" onclick="openPortfolioModal('https://sanjaryhomedecor.netlify.app/', 'Sanjary Home Decor', 'furniture')">
+          <iframe src="https://sanjaryhomedecor.netlify.app/" loading="lazy" title="Sanjary Home Decor" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay"><span class="preview-visit-btn">👁 Preview Site</span></div>
         </div>
         <div class="p-5">
           <div class="flex items-center gap-2 mb-2">
-            <span class="category-badge" style="background:rgba(16,185,129,0.12);color:#059669">🛋️ Furniture &amp; Interior</span>
+            <span class="category-badge" style="background:rgba(16,185,129,0.12);color:#059669">🛋️ Home Decor</span>
+            <span class="category-badge" style="background:rgba(100,116,139,0.1);color:#64748b">🎭 Demo</span>
           </div>
-          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Pepperfry Style Store</h3>
-          <p class="text-sm mb-3" style="color:var(--text2)">Interior design store with curated collections, shop by room, and delivery tracking.</p>
+          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Sanjary Home Decor</h3>
+          <p class="text-sm mb-3" style="color:var(--text2)">Beautiful home decor showcase with product gallery and interior inspiration sections.</p>
           <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">8-Page Pro</span>
-            <button onclick="openPortfolioModal('https://www.pepperfry.com/', 'Pepperfry Style', 'furniture')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
+            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">Demo Project</span>
+            <button onclick="openPortfolioModal('https://sanjaryhomedecor.netlify.app/', 'Sanjary Home Decor', 'furniture')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solar Glass Shield — DEMO -->
+      <div class="portfolio-card visible" data-cat="business">
+        <div class="site-preview-wrap" onclick="openPortfolioModal('https://solar-glass-shield.netlify.app/', 'Solar Glass Shield', 'business')">
+          <iframe src="https://solar-glass-shield.netlify.app/" loading="lazy" title="Solar Glass Shield" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay"><span class="preview-visit-btn">👁 Preview Site</span></div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="category-badge" style="background:rgba(245,158,11,0.12);color:#d97706">☀️ Solar &amp; Glass</span>
+            <span class="category-badge" style="background:rgba(100,116,139,0.1);color:#64748b">🎭 Demo</span>
+          </div>
+          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Solar Glass Shield</h3>
+          <p class="text-sm mb-3" style="color:var(--text2)">Clean solar &amp; glass solutions business site with services, gallery, and contact form.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">Demo Project</span>
+            <button onclick="openPortfolioModal('https://solar-glass-shield.netlify.app/', 'Solar Glass Shield', 'business')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zoya Interior — DEMO -->
+      <div class="portfolio-card visible" data-cat="furniture">
+        <div class="site-preview-wrap" onclick="openPortfolioModal('https://zoyainterior.netlify.app/', 'Zoya Interior', 'furniture')">
+          <iframe src="https://zoyainterior.netlify.app/" loading="lazy" title="Zoya Interior" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay"><span class="preview-visit-btn">👁 Preview Site</span></div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="category-badge" style="background:rgba(16,185,129,0.12);color:#059669">🛋️ Interior</span>
+            <span class="category-badge" style="background:rgba(100,116,139,0.1);color:#64748b">🎭 Demo</span>
+          </div>
+          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Zoya Interior</h3>
+          <p class="text-sm mb-3" style="color:var(--text2)">Elegant interior design studio with portfolio gallery and consultation booking.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:var(--ind-light);color:#4f46e5">Demo Project</span>
+            <button onclick="openPortfolioModal('https://zoyainterior.netlify.app/', 'Zoya Interior', 'furniture')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shivaak Enterprises — REAL -->
+      <div class="portfolio-card visible" data-cat="business">
+        <div class="site-preview-wrap" onclick="openPortfolioModal('https://shivaakenterprises.netlify.app/', 'Shivaak Enterprises', 'business')">
+          <iframe src="https://www.shivaakenterprises.in/" loading="lazy" title="Shivaak Enterprises" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay"><span class="preview-visit-btn">👁 Preview Site</span></div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="category-badge" style="background:rgba(79,70,229,0.12);color:#4f46e5">🏢 Enterprise</span>
+            <span class="category-badge" style="background:rgba(16,185,129,0.15);color:#059669;border:1px solid rgba(16,185,129,0.3)">✅ Real Project</span>
+          </div>
+          <h3 class="font-bold text-base mb-1" style="color:var(--text)">Shivaak Enterprises</h3>
+          <p class="text-sm mb-3" style="color:var(--text2)">Professional enterprise website with services, team overview, and lead generation forms.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:rgba(16,185,129,0.12);color:#059669">✅ Live Project</span>
+            <button onclick="openPortfolioModal('https://shivaakenterprises.netlify.app/', 'Shivaak Enterprises', 'business')" class="text-indigo-600 text-sm font-semibold hover:underline">Visit →</button>
           </div>
         </div>
       </div>
@@ -712,7 +659,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
       <p class="text-lg" style="color:var(--text2)" data-i="blog_p">Digital marketing tips, SEO advice, and web development insights to help your business grow.</p>
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
       <div class="blog-card rounded-2xl border overflow-hidden shadow-sm">
         <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=1000&auto=format&fit=crop" alt="" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
         <div class="p-6">
@@ -722,7 +668,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
           <button class="read-more-btn" onclick="openBlogModal(0)">Read More <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
       </div>
-
       <div class="blog-card rounded-2xl border overflow-hidden shadow-sm">
         <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=1000&auto=format&fit=crop" alt="" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
         <div class="p-6">
@@ -732,7 +677,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
           <button class="read-more-btn" onclick="openBlogModal(1)">Read More <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
       </div>
-
       <div class="blog-card rounded-2xl border overflow-hidden shadow-sm">
         <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=1000&auto=format&fit=crop" alt="" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
         <div class="p-6">
@@ -742,7 +686,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
           <button class="read-more-btn" onclick="openBlogModal(2)">Read More <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
       </div>
-
       <div class="blog-card rounded-2xl border overflow-hidden shadow-sm">
         <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop" alt="" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
         <div class="p-6">
@@ -752,7 +695,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
           <button class="read-more-btn" onclick="openBlogModal(3)">Read More <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
       </div>
-
       <div class="blog-card rounded-2xl border overflow-hidden shadow-sm">
         <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop" alt="" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
         <div class="p-6">
@@ -762,7 +704,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
           <button class="read-more-btn" onclick="openBlogModal(4)">Read More <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
       </div>
-
       <div class="blog-card rounded-2xl border overflow-hidden shadow-sm">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" alt="" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
         <div class="p-6">
@@ -772,7 +713,6 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
           <button class="read-more-btn" onclick="openBlogModal(5)">Read More <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
       </div>
-
     </div>
     <div class="mt-12 text-center">
       <a href="https://wa.me/917860703473?text=Hi!%20Digital%20marketing%20ke%20baare%20mein%20aur%20tips%20chahiye." target="_blank" class="inline-flex items-center gap-2 border-2 border-indigo-600 text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 hover:text-white transition-all text-sm" data-i="blog_more">More Tips on WhatsApp →</a>
@@ -927,19 +867,12 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
     </div>
     <div class="space-y-4 mb-16" id="faq-list">
       <div class="faq-item"><button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFAQ(this)"><span class="font-semibold text-base pr-4" style="color:var(--text)" data-i="fq1">Website banwane mein kitna time lagta hai?</span><svg class="faq-icon w-5 h-5 text-indigo-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer"><div class="px-6 pb-6 leading-relaxed" style="color:var(--text2)" data-i="fa1">Normally <strong>5–10 working days</strong> mein website ready ho jaati hai. Starter: 4–5 days, Pro: 7–10 days, Business From Scratch: 10–15 days. Urgent chahiye? Priority delivery available hai!</div></div></div>
-
       <div class="faq-item"><button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFAQ(this)"><span class="font-semibold text-base pr-4" style="color:var(--text)" data-i="fq2">Domain aur Hosting kaun se plan mein milta hai?</span><svg class="faq-icon w-5 h-5 text-indigo-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer"><div class="px-6 pb-6 leading-relaxed" style="color:var(--text2)" data-i="fa2"><strong>Business From Scratch (Rs. 50,000)</strong> plan mein 1 year ka free domain + hosting included hai. Baaki plans mein domain alag se lena padta hai.</div></div></div>
-
       <div class="faq-item"><button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFAQ(this)"><span class="font-semibold text-base pr-4" style="color:var(--text)" data-i="fq3">GMB verify hone mein kitna time lagta hai?</span><svg class="faq-icon w-5 h-5 text-indigo-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer"><div class="px-6 pb-6 leading-relaxed" style="color:var(--text2)" data-i="fa3">Google verification normally <strong>3–7 business days</strong> mein complete ho jaata hai. Main poora process handle karta hoon.</div></div></div>
-
       <div class="faq-item"><button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFAQ(this)"><span class="font-semibold text-base pr-4" style="color:var(--text)" data-i="fq4">Kya main baad mein website mein changes kar sakta hoon?</span><svg class="faq-icon w-5 h-5 text-indigo-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer"><div class="px-6 pb-6 leading-relaxed" style="color:var(--text2)" data-i="fa4">Haan bilkul! Starter: 3 free revisions, Pro: Unlimited revisions, Business From Scratch: 1 month tak koi bhi changes free.</div></div></div>
-
       <div class="faq-item"><button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFAQ(this)"><span class="font-semibold text-base pr-4" style="color:var(--text)" data-i="fq5">Payment kaise karna hai?</span><svg class="faq-icon w-5 h-5 text-indigo-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer"><div class="px-6 pb-6 leading-relaxed" style="color:var(--text2)" data-i="fa5">Payment UPI, Bank Transfer, ya any online method se hoti hai. 50% advance kaam shuru karne pe, baaki 50% delivery ke baad.</div></div></div>
-
       <div class="faq-item"><button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFAQ(this)"><span class="font-semibold text-base pr-4" style="color:var(--text)" data-i="fq6">GMB ka rank kitne time mein improve hota hai?</span><svg class="faq-icon w-5 h-5 text-indigo-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer"><div class="px-6 pb-6 leading-relaxed" style="color:var(--text2)" data-i="fa6">Results typically <strong>30–60 days</strong> mein dikhne lagte hain. Monthly report milti hai.</div></div></div>
-
       <div class="faq-item"><button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFAQ(this)"><span class="font-semibold text-base pr-4" style="color:var(--text)">Pan-India service kaise dete ho — office kahan hai?</span><svg class="faq-icon w-5 h-5 text-indigo-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer"><div class="px-6 pb-6 leading-relaxed" style="color:var(--text2)">Sab kaam <strong>100% online</strong> hota hai — WhatsApp, email aur video calls ke through. India ke kisi bhi sheher se kaam kar sakte hain.</div></div></div>
-
       <div class="faq-item"><button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFAQ(this)"><span class="font-semibold text-base pr-4" style="color:var(--text)">Kya results ki koi guarantee hai?</span><svg class="faq-icon w-5 h-5 text-indigo-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer"><div class="px-6 pb-6 leading-relaxed" style="color:var(--text2)">Website delivery ki <strong>quality guarantee</strong> hai. GMB ke liye monthly reports milti hain. SEO results Google ke algorithm pe depend karte hain — best practices aur real effort ki guarantee zaroor hai.</div></div></div>
     </div>
     <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-8 text-white text-center">
@@ -1107,7 +1040,6 @@ const BLOG_POSTS = [
   {title:"Website Speed Slow Hai? Yeh Karo Aaj Hi",tag:"Performance",tagColor:"#4f46e5",tagBg:"rgba(79,70,229,0.12)",date:"Feb 2025",img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",waMsg:"Hi!%20Website%20speed%20improve%20karne%20mein%20help%20chahiye.",content:`<p>Agar website 3 seconds se zyada mein load ho, toh 53% mobile users bounce kar jaate hain!</p><h3>Step 1: Images Compress Karo</h3><p>TinyPNG ya Squoosh se compress karo — bina quality khoye.</p><h3>Step 2: Sahi Hosting Lo</h3><p>Cheap hosting = slow website. Hostinger ya Cloudways reliable options hain.</p><ul><li>Unnecessary plugins delete karo</li><li>CDN use karo (Cloudflare free hai)</li><li>Google PageSpeed Insights se test karo</li></ul>`}
 ];
 
-// ═══ BLOG MODAL ═══
 function openBlogModal(index) {
   const post = BLOG_POSTS[index];
   const overlay = document.getElementById('blog-modal-overlay');
@@ -1121,11 +1053,10 @@ function openBlogModal(index) {
 function closeBlogModal(e) { if (e.target === document.getElementById('blog-modal-overlay')) closeBlogModalDirect(); }
 function closeBlogModalDirect() { document.getElementById('blog-modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
 
-// ═══ PORTFOLIO MODAL ═══
 function openPortfolioModal(url, title, cat) {
-  const catLabels = {restaurant:'🍽️ Restaurant',gym:'💪 Gym',salon:'💇 Spa & Salon',furniture:'🛋️ Furniture & Interior'};
-  const catColors = {restaurant:'#dc2626',gym:'#d97706',salon:'#db2777',furniture:'#059669'};
-  const catBgs = {restaurant:'rgba(239,68,68,0.12)',gym:'rgba(245,158,11,0.12)',salon:'rgba(236,72,153,0.12)',furniture:'rgba(16,185,129,0.12)'};
+  const catLabels = {restaurant:'🏨 Hotel & Restaurant',gym:'💪 Gym',salon:'💇 Spa & Salon',furniture:'🛋️ Furniture & Interior',business:'🏢 Business'};
+  const catColors = {restaurant:'#dc2626',gym:'#d97706',salon:'#db2777',furniture:'#059669',business:'#4f46e5'};
+  const catBgs = {restaurant:'rgba(239,68,68,0.12)',gym:'rgba(245,158,11,0.12)',salon:'rgba(236,72,153,0.12)',furniture:'rgba(16,185,129,0.12)',business:'rgba(79,70,229,0.12)'};
   document.getElementById('pm-tag').innerHTML = `<span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background:${catBgs[cat]||'var(--ind-light)'};color:${catColors[cat]||'#4f46e5'}">${catLabels[cat]||cat}</span>`;
   document.getElementById('pm-title').textContent = title;
   document.getElementById('pm-link').href = url;
@@ -1141,7 +1072,6 @@ function closePortfolioModalDirect() {
 }
 document.addEventListener('keydown', function(e) { if(e.key==='Escape'){closeBlogModalDirect();closePortfolioModalDirect();} });
 
-// ═══ PORTFOLIO FILTER ═══
 function filterPortfolio(cat, btn) {
   document.querySelectorAll('.portfolio-cat-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -1153,7 +1083,6 @@ function filterPortfolio(cat, btn) {
   });
 }
 
-// ═══ AUTO THEME ═══
 let userOverriddenTheme = false;
 function autoSetTheme() {
   if (userOverriddenTheme) return;
@@ -1166,7 +1095,6 @@ function autoSetTheme() {
   setTimeout(() => badge.classList.remove('show'), 3000);
 }
 
-// ═══ THEME ═══
 let currentTheme = 'light';
 function setTheme(theme, userOverride) {
   if (userOverride) userOverriddenTheme = true;
@@ -1178,9 +1106,8 @@ function setTheme(theme, userOverride) {
   ['btn-dark','btn-dark-m'].forEach(id => { const el=document.getElementById(id); if(el) el.classList.toggle('active', theme==='dark'); });
 }
 
-// ═══ TRANSLATIONS ═══
 const T = {
-  en:{nav_home:'Home',nav_about:'About',nav_services:'Services',nav_portfolio:'Portfolio',nav_blog:'Blog',nav_pricing:'Pricing',nav_faq:'FAQ',nav_contact:'Contact',nav_cta:'Get Started',hero_badge:'Serving All Over India',hero_h1a:'Elevate Your',hero_h1b:'Digital Presence',hero_p:'Froxzz Development crafts stunning websites and optimizes Google My Business profiles — helping you dominate local search and attract more customers.',hero_btn1:'Start Your Project',hero_btn2:'View Pricing',hero_stat1_label:'Google Rankings',hero_stat1:'Rank Higher 🚀',expertise_label:'What We Do',expertise_h:'Core Expertise',exp1_h:'Website Creation',exp1_p:'Fast, responsive, and beautiful websites tailored to your business needs.',exp2_h:'GMB Creation & SEO',exp2_p:'Optimize your Google My Business profile to rank high in local search.',learn_more:'Learn more',learn_more2:'Learn more',whyus_label:'Why Us',whyus_h:'Why Choose Froxzz Development?',why1_h:'Expert Execution',why1_p:"Skilled in web development and SEO — dedicated fully to your project's success.",why2_h:'Result Oriented',why2_p:'Focus on metrics that matter: traffic, leads, and real business growth.',why3_h:'Pan-India Reach',why3_p:'No matter where you are in India, top-notch digital solutions delivered.',cta_h:'Ready to Grow Your Business Online?',cta_p:'Get a free consultation. No obligations, just good advice.',cta_btn:'Get Free Consultation',about_h:'About Froxzz Development',about_p:'A passionate digital creator and strategist helping businesses across India.',about_sub:'Your Partner in Digital Growth',about_p1:'At Froxzz Development, I believe that every business deserves a powerful online presence.',about_p2:'Whether you need a brand new website or want to dominate local search, I deliver results across all of India.',about_li1:'Custom Website Development',about_li2:'Google My Business Optimization',about_li3:'Local SEO Strategies',about_li4:'Pan-India Service Coverage',about_m1h:'My Mission',about_m1p:'To empower businesses of all sizes with cutting-edge digital tools.',about_m2h:'Who I Am',about_m2p:'A solo developer and digital strategist with expertise in web development, local SEO, and GMB optimization.',about_m3h:'My Approach',about_m3p:'Fast, agile, and data-driven.',svc_h:'Our Services',svc_p:'Comprehensive digital solutions to establish your brand online.',svc1_h:'Website Creation',svc1_p:'I build fast, responsive, and beautiful websites tailored to your business.',svc1_f1h:'Custom Design',svc1_f1p:'Unique designs that perfectly match your brand identity.',svc1_f2h:'Mobile Responsive',svc1_f2p:'Flawless experience across all devices.',svc1_f3h:'Fast Loading Speeds',svc1_f3p:'Optimized code for lightning-fast page loads.',svc1_f4h:'SSL Secured',svc1_f4p:'Your website delivered with full HTTPS security.',see_pricing:'See Pricing',svc2_h:'GMB Creation & SEO',svc2_p:'I create and optimize your Google My Business profile.',svc2_f1h:'Profile Setup & Verification',svc2_f1p:'Complete setup of your GMB profile.',svc2_f2h:'Local Keyword Optimization',svc2_f2p:'Targeting phrases your local customers are searching for.',svc2_f3h:'Review Management',svc2_f3p:'Systems to generate positive reviews and manage your reputation.',svc2_f4h:'Maps Ranking Boost',svc2_f4p:'Appear in the Google Maps 3-pack for maximum visibility.',get_started:'Get Started',portfolio_h:'Portfolio',portfolio_p:'Real websites built for real businesses. Click on any card to preview the website live.',pcat_all:'All',pcat_restaurant:'🍽️ Restaurant',pcat_gym:'💪 Gym',pcat_salon:'💇 Spa & Salon',pcat_furniture:'🛋️ Furniture & Interior',portfolio_cta_h:'Apna Business Bhi Yahan Dikhna Chahte Ho?',portfolio_cta_p:'Aapke industry ke liye ek professional website banate hain.',portfolio_cta_btn:'Get Your Website Built →',blog_label:'Insights & Tips',blog_h:'Blog',blog_p:'Digital marketing tips, SEO advice, and web development insights.',blog_more:'More Tips on WhatsApp →',pricing_label:'Transparent Pricing',pricing_h:'Simple, Honest Pricing',pricing_p:'No hidden charges. No surprises.',tab_web:'Website Plans',tab_gmb:'GMB / SEO Plans',web_badge:'One-time payment · No monthly fees · Lifetime ownership',p1_tier:'Starter',p1_name:'4-Page Website',one_time:'one-time',p1_desc:'Perfect for small businesses, freelancers, and startups.',included:"What's Included",get_plan:'Get This Plan →',p2_tier:'Pro',p2_name:'8-Page Website',p2_desc:'For growing businesses that need a powerful, feature-rich website.',everything_plus:'Everything in Starter, plus:',get_plan2:'Get This Plan →',p3_tier:'Ultimate',p3_name:'Business From Scratch',p3_tag:'🔥 Complete Business Launch Package',p3_desc:'Starting from zero? I handle everything.',launch_btn:'🚀 Launch My Business →',unsure:'💬 Not sure which plan?',chat_wa:'Chat on WhatsApp',free_advice:'free advice, no pressure.',gmb_badge:'Monthly subscription · Cancel anytime · Best results',bundle_h:'Want GMB + Website Together?',bundle_p:'Combine any website plan with a GMB SEO plan and get a special bundled discount.',bundle_btn:'Get Bundle Deal →',faq_label:'Got Questions?',faq_h:'Frequently Asked Questions',faq_p:'Sab common sawaalon ke jawab yahan hain.',fq1:'Website banwane mein kitna time lagta hai?',fa1:'Normally <strong>5–10 working days</strong>. Starter: 4–5 days, Pro: 7–10 days, Business From Scratch: 10–15 days.',fq2:'Domain aur Hosting kaun se plan mein milta hai?',fa2:'<strong>Business From Scratch (Rs. 50,000)</strong> mein 1 year free domain + hosting.',fq3:'GMB verify hone mein kitna time lagta hai?',fa3:'<strong>3–7 business days</strong>.',fq4:'Kya main baad mein website mein changes kar sakta hoon?',fa4:'Starter: 3 free revisions, Pro: Unlimited, Business From Scratch: 1 month free.',fq5:'Payment kaise karna hai?',fa5:'UPI, Bank Transfer, ya any online method. 50% advance, 50% after delivery.',fq6:'GMB ka rank kitne time mein improve hota hai?',fa6:'<strong>30–60 days</strong> mein results visible hote hain.',faq_cta_h:'Have more questions?',faq_cta_p:"WhatsApp us directly!",faq_wa:'WhatsApp Us →',contact_label:'Contact Us',contact_h:"Let's Build Something",contact_h2:'Great Together',contact_p:'Ready to take your business to the next level?',contact_call:'Call / WhatsApp',contact_email:'Email',contact_loc_label:'Coverage',contact_loc:'Serving All Over India',wa_chat:'Chat on WhatsApp',form_success_h:'Message Sent! 🎉',form_success_p:'WhatsApp window should have opened!',form_again:'Send Again',form_h:'Send Us a Message',form_sub:'Fill the form — message goes directly to WhatsApp 🚀',f_name_label:'Full Name *',f_name_err:'⚠ Name is required',f_phone_label:'Phone Number *',f_phone_err:'⚠ Phone is required',f_email_label:'Email',optional:'(optional)',f_svc_label:'Service',f_msg_label:'Message *',f_msg_err:'⚠ Message is required',form_wa_btn:'Send via WhatsApp',form_email_btn:'Send via Email',form_privacy:'🔒 Your details are safe — no spam ever.',footer_desc:'Empowering businesses across India with modern web development and local SEO solutions.',footer_pages:'Pages',footer_svc:'Services',footer_svc1:'Website Creation',footer_svc2:'GMB Creation',footer_svc3:'Local SEO',footer_contact:'Contact',footer_loc:'All Over India',footer_cta:'Free Consultation',footer_rights:'All rights reserved.',footer_status:'Available Pan-India'}
+  en:{nav_home:'Home',nav_about:'About',nav_services:'Services',nav_portfolio:'Portfolio',nav_blog:'Blog',nav_pricing:'Pricing',nav_faq:'FAQ',nav_contact:'Contact',nav_cta:'Get Started',hero_badge:'Serving All Over India',hero_h1a:'Elevate Your',hero_h1b:'Digital Presence',hero_p:'Froxzz Development crafts stunning websites and optimizes Google My Business profiles — helping you dominate local search and attract more customers.',hero_btn1:'Start Your Project',hero_btn2:'View Pricing',hero_stat1_label:'Google Rankings',hero_stat1:'Rank Higher 🚀',expertise_label:'What We Do',expertise_h:'Core Expertise',exp1_h:'Website Creation',exp1_p:'Fast, responsive, and beautiful websites tailored to your business needs.',exp2_h:'GMB Creation & SEO',exp2_p:'Optimize your Google My Business profile to rank high in local search.',learn_more:'Learn more',learn_more2:'Learn more',whyus_label:'Why Us',whyus_h:'Why Choose Froxzz Development?',why1_h:'Expert Execution',why1_p:"Skilled in web development and SEO — dedicated fully to your project's success.",why2_h:'Result Oriented',why2_p:'Focus on metrics that matter: traffic, leads, and real business growth.',why3_h:'Pan-India Reach',why3_p:'No matter where you are in India, top-notch digital solutions delivered.',cta_h:'Ready to Grow Your Business Online?',cta_p:'Get a free consultation. No obligations, just good advice.',cta_btn:'Get Free Consultation',about_h:'About Froxzz Development',about_p:'A passionate digital creator and strategist helping businesses across India.',about_sub:'Your Partner in Digital Growth',about_p1:'At Froxzz Development, I believe that every business deserves a powerful online presence.',about_p2:'Whether you need a brand new website or want to dominate local search, I deliver results across all of India.',about_li1:'Custom Website Development',about_li2:'Google My Business Optimization',about_li3:'Local SEO Strategies',about_li4:'Pan-India Service Coverage',about_m1h:'My Mission',about_m1p:'To empower businesses of all sizes with cutting-edge digital tools.',about_m2h:'Who I Am',about_m2p:'A solo developer and digital strategist with expertise in web development, local SEO, and GMB optimization.',about_m3h:'My Approach',about_m3p:'Fast, agile, and data-driven.',svc_h:'Our Services',svc_p:'Comprehensive digital solutions to establish your brand online.',svc1_h:'Website Creation',svc1_p:'I build fast, responsive, and beautiful websites tailored to your business.',svc1_f1h:'Custom Design',svc1_f1p:'Unique designs that perfectly match your brand identity.',svc1_f2h:'Mobile Responsive',svc1_f2p:'Flawless experience across all devices.',svc1_f3h:'Fast Loading Speeds',svc1_f3p:'Optimized code for lightning-fast page loads.',svc1_f4h:'SSL Secured',svc1_f4p:'Your website delivered with full HTTPS security.',see_pricing:'See Pricing',svc2_h:'GMB Creation & SEO',svc2_p:'I create and optimize your Google My Business profile.',svc2_f1h:'Profile Setup & Verification',svc2_f1p:'Complete setup of your GMB profile.',svc2_f2h:'Local Keyword Optimization',svc2_f2p:'Targeting phrases your local customers are searching for.',svc2_f3h:'Review Management',svc2_f3p:'Systems to generate positive reviews and manage your reputation.',svc2_f4h:'Maps Ranking Boost',svc2_f4p:'Appear in the Google Maps 3-pack for maximum visibility.',get_started:'Get Started',portfolio_h:'Portfolio',portfolio_p:'Real websites built for real businesses. Click on any card to preview the website live.',portfolio_cta_h:'Apna Business Bhi Yahan Dikhna Chahte Ho?',portfolio_cta_p:'Aapke industry ke liye ek professional website banate hain.',portfolio_cta_btn:'Get Your Website Built →',blog_label:'Insights & Tips',blog_h:'Blog',blog_p:'Digital marketing tips, SEO advice, and web development insights.',blog_more:'More Tips on WhatsApp →',pricing_label:'Transparent Pricing',pricing_h:'Simple, Honest Pricing',pricing_p:'No hidden charges. No surprises.',tab_web:'Website Plans',tab_gmb:'GMB / SEO Plans',web_badge:'One-time payment · No monthly fees · Lifetime ownership',p1_tier:'Starter',p1_name:'4-Page Website',one_time:'one-time',p1_desc:'Perfect for small businesses, freelancers, and startups.',included:"What's Included",get_plan:'Get This Plan →',p2_tier:'Pro',p2_name:'8-Page Website',p2_desc:'For growing businesses that need a powerful, feature-rich website.',everything_plus:'Everything in Starter, plus:',get_plan2:'Get This Plan →',p3_tier:'Ultimate',p3_name:'Business From Scratch',p3_tag:'🔥 Complete Business Launch Package',p3_desc:'Starting from zero? I handle everything.',launch_btn:'🚀 Launch My Business →',unsure:'💬 Not sure which plan?',chat_wa:'Chat on WhatsApp',free_advice:'free advice, no pressure.',gmb_badge:'Monthly subscription · Cancel anytime · Best results',bundle_h:'Want GMB + Website Together?',bundle_p:'Combine any website plan with a GMB SEO plan and get a special bundled discount.',bundle_btn:'Get Bundle Deal →',faq_label:'Got Questions?',faq_h:'Frequently Asked Questions',faq_p:'Sab common sawaalon ke jawab yahan hain.',fq1:'Website banwane mein kitna time lagta hai?',fa1:'Normally <strong>5–10 working days</strong>. Starter: 4–5 days, Pro: 7–10 days, Business From Scratch: 10–15 days.',fq2:'Domain aur Hosting kaun se plan mein milta hai?',fa2:'<strong>Business From Scratch (Rs. 50,000)</strong> mein 1 year free domain + hosting.',fq3:'GMB verify hone mein kitna time lagta hai?',fa3:'<strong>3–7 business days</strong>.',fq4:'Kya main baad mein website mein changes kar sakta hoon?',fa4:'Starter: 3 free revisions, Pro: Unlimited, Business From Scratch: 1 month free.',fq5:'Payment kaise karna hai?',fa5:'UPI, Bank Transfer, ya any online method. 50% advance, 50% after delivery.',fq6:'GMB ka rank kitne time mein improve hota hai?',fa6:'<strong>30–60 days</strong> mein results visible hote hain.',faq_cta_h:'Have more questions?',faq_cta_p:"WhatsApp us directly!",faq_wa:'WhatsApp Us →',contact_label:'Contact Us',contact_h:"Let's Build Something",contact_h2:'Great Together',contact_p:'Ready to take your business to the next level?',contact_call:'Call / WhatsApp',contact_email:'Email',contact_loc_label:'Coverage',contact_loc:'Serving All Over India',wa_chat:'Chat on WhatsApp',form_success_h:'Message Sent! 🎉',form_success_p:'WhatsApp window should have opened!',form_again:'Send Again',form_h:'Send Us a Message',form_sub:'Fill the form — message goes directly to WhatsApp 🚀',f_name_label:'Full Name *',f_name_err:'⚠ Name is required',f_phone_label:'Phone Number *',f_phone_err:'⚠ Phone is required',f_email_label:'Email',optional:'(optional)',f_svc_label:'Service',f_msg_label:'Message *',f_msg_err:'⚠ Message is required',form_wa_btn:'Send via WhatsApp',form_email_btn:'Send via Email',form_privacy:'🔒 Your details are safe — no spam ever.',footer_desc:'Empowering businesses across India with modern web development and local SEO solutions.',footer_pages:'Pages',footer_svc:'Services',footer_svc1:'Website Creation',footer_svc2:'GMB Creation',footer_svc3:'Local SEO',footer_contact:'Contact',footer_loc:'All Over India',footer_cta:'Free Consultation',footer_rights:'All rights reserved.',footer_status:'Available Pan-India'}
 };
 T.hi = {...T.en,nav_home:'होम',nav_about:'हमारे बारे में',nav_services:'सेवाएँ',nav_portfolio:'पोर्टफोलियो',nav_blog:'ब्लॉग',nav_pricing:'मूल्य',nav_faq:'सवाल-जवाब',nav_contact:'संपर्क',nav_cta:'शुरू करें',hero_badge:'पूरे भारत में सेवा',hero_h1a:'अपनी',hero_h1b:'डिजिटल पहचान बढ़ाएँ',cta_btn:'मुफ्त परामर्श पाएँ',portfolio_h:'पोर्टफोलियो',portfolio_p:'असली वेबसाइटें असली व्यवसायों के लिए।',footer_rights:'सर्वाधिकार सुरक्षित।'};
 T.mix = {...T.en,hero_h1a:'Apna',hero_h1b:'Digital Presence Badhao',hero_btn1:'Project Shuru Karo',hero_btn2:'Pricing Dekho',cta_btn:'Free Consultation Lo',portfolio_h:'Hamaara Kaam',portfolio_p:'Real businesses ke liye banai real websites. Card click karo live preview ke liye.',faq_cta_h:'Aur koi sawaal hai?',faq_cta_p:'WhatsApp pe directly pooch lo!',faq_wa:'WhatsApp Karo →',contact_h:'Milke Kuch',contact_h2:'Kamaal Banayein',form_wa_btn:'WhatsApp Par Bhejo'};
@@ -1194,7 +1121,6 @@ function setLang(lang) {
   document.querySelectorAll('[data-i]').forEach(el => { const k=el.getAttribute('data-i'); if(d[k]!==undefined) el.innerHTML=d[k]; });
 }
 
-// ═══ PAGE NAVIGATION ═══
 const pages = ['home','about','services','portfolio','blog','pricing','faq','contact'];
 let currentPage = 'home';
 const pageOrder = {home:0,about:1,services:2,portfolio:3,blog:4,pricing:5,faq:6,contact:7};
@@ -1223,14 +1149,12 @@ window.addEventListener('load', function() {
   document.getElementById(start).classList.add('page-section');
   currentPage = start;
   document.querySelectorAll('.nav-link').forEach(l => { l.getAttribute('href')==='#'+start ? l.classList.add('active') : l.classList.remove('active'); });
-  // init portfolio display
   document.querySelectorAll('.portfolio-card').forEach(c => { c.style.display='flex'; c.style.flexDirection='column'; });
   setLang('en');
   autoSetTheme();
 });
 window.addEventListener('popstate', function() { var hash=window.location.hash.replace('#',''); if(pages.includes(hash)&&hash!==currentPage) showPage(hash); });
 
-// ═══ HAMBURGER ═══
 var menuOpen = false;
 function toggleMobileMenu() {
   menuOpen = !menuOpen;
@@ -1238,12 +1162,10 @@ function toggleMobileMenu() {
   document.getElementById('ham-icon').classList.toggle('ham-open', menuOpen);
 }
 
-// ═══ PRICING TABS ═══
 function switchPricingTab(tab) {
   ['website','gmb'].forEach(t => { document.getElementById('tab-'+t).classList.toggle('active',t===tab); document.getElementById('tab-content-'+t).classList.toggle('active',t===tab); });
 }
 
-// ═══ FAQ ═══
 function toggleFAQ(btn) {
   var item = btn.closest('.faq-item');
   var ans = item.querySelector('.faq-answer');
@@ -1253,7 +1175,6 @@ function toggleFAQ(btn) {
   if (!isOpen) { ans.classList.add('open'); item.classList.add('active'); }
 }
 
-// ═══ CONTACT FORM ═══
 function validateField(id, errId) {
   var val = document.getElementById(id).value.trim();
   var err = document.getElementById(errId);
