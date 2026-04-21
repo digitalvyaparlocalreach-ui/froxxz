@@ -35,16 +35,18 @@
 }
 
 *{box-sizing:border-box}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);transition:background .25s,color .2s}
+/* ══ KEY FIX: Prevent horizontal overflow / zoom on mobile ══ */
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);transition:background .25s,color .2s;overflow-x:hidden;position:relative}
 h1,h2,h3,h4,h5{font-family:'Syne',sans-serif}
-html{scroll-behavior:smooth}
 
-.page-section{min-height:calc(100vh - 300px);animation:slideUp .45s cubic-bezier(.22,1,.36,1) forwards}
+.page-section{min-height:calc(100vh - 300px);animation:slideUp .45s cubic-bezier(.22,1,.36,1) forwards;overflow-x:hidden;max-width:100%}
 @keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.page-section.slide-left{animation:slideLeft .45s cubic-bezier(.22,1,.36,1) forwards}
-@keyframes slideLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
-.page-section.slide-right{animation:slideRight .45s cubic-bezier(.22,1,.36,1) forwards}
-@keyframes slideRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+/* Reduced translateX so animation never pushes content off screen */
+.page-section.slide-left{animation:slideLeft .42s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes slideLeft{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
+.page-section.slide-right{animation:slideRight .42s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes slideRight{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
 
 nav{background:var(--nav-bg);box-shadow:var(--nav-shadow);transition:background .25s,box-shadow .25s}
 .nav-link{position:relative;padding-bottom:2px;color:var(--text2);transition:color .2s}
@@ -164,7 +166,8 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
 .portfolio-card.visible{display:flex;flex-direction:column}
 .portfolio-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -12px rgba(79,70,229,.18)}
 
-.site-preview-wrap{position:relative;width:100%;height:220px;overflow:hidden;background:#f1f5f9;cursor:pointer}
+/* ══ IFRAME PREVIEW FIX ══ */
+.site-preview-wrap{position:relative;width:100%;height:220px;overflow:hidden;background:#f1f5f9;cursor:pointer;contain:strict}
 .site-preview-wrap iframe{width:200%;height:200%;transform:scale(0.5);transform-origin:top left;pointer-events:none;border:none}
 .site-preview-wrap .preview-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(79,70,229,0);transition:background .3s}
 .site-preview-wrap:hover .preview-overlay{background:rgba(79,70,229,0.08)}
@@ -181,6 +184,67 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
 .portfolio-modal-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-shrink:0}
 .portfolio-modal-iframe-wrap{flex:1;overflow:hidden;min-height:500px}
 .portfolio-modal-iframe-wrap iframe{width:100%;height:100%;border:none}
+
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE FIXES — ANTI STRETCH/ZOOM
+   ═══════════════════════════════════════════ */
+@media (max-width:768px){
+  /* Prevent any page-level horizontal scroll */
+  .page-section{
+    animation-duration:.28s;
+    width:100%;
+    max-width:100vw;
+  }
+
+  /* Portfolio iframe thumbnails: scale down further for mobile */
+  .site-preview-wrap{height:185px}
+  .site-preview-wrap iframe{
+    width:300%;
+    height:300%;
+    transform:scale(0.333);
+    transform-origin:top left;
+  }
+
+  /* Portfolio modal full screen on mobile */
+  .portfolio-modal-overlay{padding:8px}
+  .portfolio-modal-box{
+    border-radius:14px;
+    max-height:96vh;
+  }
+  .portfolio-modal-iframe-wrap{min-height:300px}
+
+  /* Blog modal */
+  .blog-modal-sheet{max-height:93vh}
+
+  /* WhatsApp float button - smaller on mobile */
+  .wa-float{bottom:16px;right:14px;width:50px;height:50px}
+
+  /* Prevent cards from overflowing */
+  .pricing-card,.gmb-card,.hover-card{max-width:100%}
+
+  /* Nav brand on small screens */
+  .brand-top{font-size:1.05rem}
+}
+
+@media (max-width:480px){
+  /* Very small screens — tiny iframe thumbnails */
+  .site-preview-wrap{height:160px}
+  .site-preview-wrap iframe{
+    width:400%;
+    height:400%;
+    transform:scale(0.25);
+    transform-origin:top left;
+  }
+
+  /* Portfolio modal */
+  .portfolio-modal-iframe-wrap{min-height:240px}
+
+  /* Prevent text overflow */
+  h1{word-break:break-word}
+
+  /* Pricing tabs wrap properly */
+  .pricing-tab-btn span{font-size:12px}
+}
 </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -313,7 +377,7 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
   </div>
 </nav>
 
-<main class="flex-grow pt-20">
+<main class="flex-grow pt-20" style="overflow-x:hidden;max-width:100vw">
 
 <!-- HOME -->
 <div id="home" class="page-section">
@@ -499,7 +563,7 @@ input::placeholder,textarea::placeholder{color:var(--text3)!important}
     </div>
 
     <!-- Legend -->
-    <div class="flex justify-center gap-4 mb-6">
+    <div class="flex flex-wrap justify-center gap-4 mb-6">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold" style="background:rgba(16,185,129,0.12);color:#059669;border:1px solid rgba(16,185,129,0.3)">✅ Real Project — Live client website</div>
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold" style="background:rgba(100,116,139,0.1);color:#64748b;border:1px solid rgba(100,116,139,0.2)">🎭 Demo — Sample/practice website</div>
     </div>
